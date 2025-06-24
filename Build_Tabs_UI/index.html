@@ -55,14 +55,17 @@
     const tabs = $$('.tab-item');
     const panes = $$('.tab-pane');
     const line = $('.line');
+    const tabWidth = tabs[0].offsetWidth;
 
-    
+    const tabActive = $(".tab-item.active");
+    line.style.left = tabActive.offsetLeft + "px";
+    line.style.width = tabActive.offsetWidth + "px";
+
     tabs.forEach((tab, index) => {
         tab.addEventListener('click', () => {
-        const tabActive = $(".tab-item.active");
         const paneActive = $(".tab-pane.active");
 
-        tabActive.classList.remove('active');
+        $(".tab-item.active").classList.remove('active');
         paneActive.classList.remove('active');
 
         // Add active class to the clicked tab and corresponding pane
